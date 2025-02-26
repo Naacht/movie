@@ -1,0 +1,42 @@
+/* Style de la barre de recherche */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Style de la barre de recherche lors du focus */
+  .search-bar:focus-within {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Style du champ de recherche */
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 50px;
+  }
+  
+  /* Style du bouton pour effacer le champ de recherche */
+  .clear-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: gray;
+    margin-left: 10px;
+  }
+  
+  /* Style du bouton pour effacer le champ de recherche lors du focus */
+  .clear-button:hover {
+    color: black;
+  }
+  

@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
+import SearchBar from "./components/SearchBar";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Router>
+      <header>
+        <SearchBar setSearchQuery={setSearchQuery} />
       </header>
-    </div>
+
+      <main>
+        <MovieList searchQuery={searchQuery} />
+        <ConditionalMovieDetails searchQuery={searchQuery} />
+      </main>
+    </Router>
   );
-}
+};
+
+// Composant pour gérer l'affichage conditionnel de MovieDetails
+const ConditionalMovieDetails = ({ searchQuery }) => {
+  const location = useLocation();
+  const isMovieSelected = location.pathname.startsWith("/movie/");
+
+  if (!searchQuery || !isMovieSelected) return null; // On masque MovieDetails si aucune recherche
+
+  return (
+    <Routes>
+      <Route path="/movie/:id" element={<MovieDetails />} />
+    </Routes>
+  );
+};
 
 export default App;
