@@ -1,47 +1,85 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./MovieList.css";
 
-const MovieList = ({ searchQuery }) => {
-  const [movies, setMovies] = useState([]); // Stocker la liste des films
+const MovieList = ({ searchQuery, setSelectedMovieId }) => {
+  const [movies, setMovies] = useState([]);
 
-  // Effectué une requête à l'API The Movie Database pour récupérer la liste des films
   useEffect(() => {
-    // Récupère la liste des films à partir de l'API The Movie Database
+    if (!searchQuery) return;
+
     const fetchMovies = async () => {
       const apiKey = process.env.REACT_APP_TMDB_API_KEY;
       const language = "fr";
-      // Effectue la requête à l'API The Movie Database avec le mot-clé de recherche et la langue
+
       try {
         const response = await axios.get(
           "https://api.themoviedb.org/3/search/movie",
           { params: { api_key: apiKey, query: searchQuery, language } }
         );
-        // Récupère la liste des films dans le state
         setMovies(response.data.results);
       } catch (error) {
         console.error("Erreur API", error);
       }
     };
-    // Appelle la fonction fetchMovies pour récupérer la liste des films
+
     fetchMovies();
   }, [searchQuery]);
 
-  // Affiche la liste des films dans une liste HTML
   return (
     <div className="movie-list-container">
       <h2>Liste des films</h2>
       {movies.length === 0 ? (
         <p>Aucun film trouvé.</p>
       ) : (
-        <ul>
+        <div className="movie-cards">
           {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-            </li>
+            <div
+              key={movie.id}
+              className="movie-card"
+              onClick={() => setSelectedMovieId(movie.id)} // Ajoute cette ligne pour gérer le clic
+            >
+              <div className="movie-card-image">
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              </div>
+              <div className="movie-card-content">
+                <h3 className="movie-card-title">{movie.title}</h3>
+                <p className="movie-card-genre">
+                  {movie.genre_ids
+                    .map((genreId) => {
+                      // Convertir les IDs de genre en noms (exemple simplifié)
+                      const genres = {
+                        28: "Action",
+                        12: "Adventure",
+                        16: "Animation",
+                        35: "Comedy",
+                        80: "Crime",
+                        99: "Documentary",
+                        18: "Drama",
+                        10751: "Family",
+                        14: "Fantasy",
+                        36: "History",
+                        27: "Horror",
+                        10402: "Music",
+                        9648: "Mystery",
+                        10749: "Romance",
+                        878: "Science Fiction",
+                        10770: "TV Movie",
+                        53: "Thriller",
+                        10752: "War",
+                        37: "Western",
+                      };
+                      return genres[genreId];
+                    })
+                    .join(", ")}
+                </p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

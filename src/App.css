@@ -12,10 +12,35 @@ header {
   background-color: #1f4d91; /* Bleu plus foncé */
   padding: 15px;
   display: flex;
-  justify-content: center; /* Alignement à gauche */
+  justify-content: center;
   align-items: center;
 }
 
+.main-container {
+  display: flex;
+  padding: 20px;
+  gap: 20px; /* Espace entre la liste et les détails */
+  align-items: flex-start; /* Aligner les éléments en haut */
+}
+
+.movie-list-container {
+  flex: 1;
+  background-color: #1e3a8a;
+  padding: 20px;
+  border-radius: 10px;
+  color: #1e3a8a;
+  max-width: 350px; /* Largeur fixe pour la liste */
+}
+
+.movie-details-container {
+  flex: 2;
+  background-color: #e3f2fd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles existants pour la barre de recherche */
 .search-container {
   display: flex;
   align-items: center;
@@ -40,5 +65,3 @@ header {
   cursor: pointer;
   font-size: 18px;
 }
-
-

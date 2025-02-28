@@ -1,76 +1,57 @@
-/* Conteneur principal des détails du film */
-.movie-details-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-  }
+/* MovieDetails.css */
+.movie-details {
+  background-color: #e3f2fd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 75px; /* Espace entre la liste et les détails */
+  flex: 1.5; /* Diminue la taille */
+  width: 65%;
+  max-width: 1100px;
+  height: auto; /* La hauteur s'adapte au contenu */
+}
 
-/* Carte contenant toutes les informations du film */
-  .movie-card {
-    width: 60%;
-    background: #e3f2fd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
 
-/* Titre du film */
-  .movie-title {
-    font-size: 24px;
-    color: #0d47a1;
-    margin-bottom: 10px;
-  }
-  
-/* Conteneur pour l'affiche et les informations du film */ 
- .movie-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
- 
- /* Image du film */ 
-  .movie-image img {
-    width: 230px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-/* Informations du film */
-  .movie-info {
-    flex: 1;
-  }
+.movie-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-/* Synopsis du film */
-  .movie-info p {
-    margin: 8px 0;
-  }
+.movie-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
 
-/* Liste des genres du film */
-  .movie-info ul {
-    list-style-type: none;
-    padding: 0;
-  }
+.movie-image img {
+  width: 230px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-/* Titre des genres du film */
-  .movie-info ul li {
-    margin-bottom: 4px;
-  }
-  
-/* Bouton pour revenir à la liste des films */
-  .movie-synopsis {
-    margin-top: 20px;
-  }
-  
-  /* Titre du synopsis du film */
-  .movie-synopsis h3 {
-    font-size: 20px;
-    color: #0d47a1;
-  }
-  
-/* Synopsis du film */
-  .movie-synopsis p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
+.movie-info p {
+  margin: 8px 0;
+}
+
+.movie-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.movie-info ul li {
+  margin-bottom: 4px;
+}
+
+.movie-synopsis {
+  margin-top: 20px;
+}
+
+.movie-synopsis h3 {
+  font-size: 20px;
+  color: #0d47a1;
+}
+
+.movie-synopsis p {
+  font-size: 16px;
+  line-height: 1.5;
+}
